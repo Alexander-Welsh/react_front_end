@@ -2,11 +2,6 @@
   text-align: center;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
-}
-
 .App-header {
   background-color: #222;
   height: 150px;
@@ -27,6 +22,12 @@
   to { transform: rotate(360deg); }
 }
 
+#box-container {
+  display:flex;
+  flex-direction: row;
+  width:100%;
+}
+
 .item-holder {
   display: flex;
   flex-direction: row;
@@ -40,11 +41,31 @@
   border: 1px solid black;
 }
 
-#add-meal-text {
-  width: 60%;
-
+#meal-items {
+  display:flex;
+  flex-direction: column;
+  width:30%;
+  height:250px;
 }
 
+#add-meal-text {
+  width: 50%;
+  display: inline-block;
+
+}
+#show-if-meal {
+  width: 30%;
+  display: inline-block;
+}
+
+.small-remove {
+  width: 25%;
+  padding: 10px 12px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
 
 /*set size on all images to same size as original from recipepuppy */
 .thumbnail {
@@ -53,20 +74,21 @@
 }
 
 input[type=text] {
-    width: 33%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
+  width: 33%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
 }
 
 input[type=submit] {
-    width: 10%;
-    padding: 14px 20px;
-    margin: 8px 0;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
+  width: 10%;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
 }
+
