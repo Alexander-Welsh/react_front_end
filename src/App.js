@@ -3,16 +3,40 @@ import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
+  constructor(){
+    super();
+    this.state = {
+      menuItems: []
+    };
+  }
+
+  componentDidMount(){
+    fetch('http://www.recipepuppy.com/api/?q=onions')
+    .then(results => {
+      console.log(results)
+      return results.json();
+    }).then(data => {
+      console.log(data)
+      let menuItems = data.results.map((item, iter) =>{
+        return(
+            <div key={iter}>
+              <img src={item.thumbnail} alt={item.title}/>
+              <a href={item.href}>Learn More!</a>
+
+            </div>
+          )
+      })
+      this.setState({menuItems: menuItems});
+    })
+  }
+
   render() {
+    console.log(this.state)
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <div>
+            {this.state.menuItems}
+        </div>
       </div>
     );
   }
