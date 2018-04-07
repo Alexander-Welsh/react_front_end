@@ -6,12 +6,21 @@ class App extends Component {
   constructor(){
     super();
     this.state = {
-      menuItems: []
+      menuItems: [],
+      value: ""
     };
+
+    this.handleChange = this.handleChange.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
 
-  componentDidMount(){
-    fetch('http://www.recipepuppy.com/api/?q=onions')
+  handleChange(event){
+    this.setState({value: event.target.value});
+  }
+
+  handleSubmit(event){
+    console.log("event")
+    fetch(`http://www.recipepuppy.com/api/?q=${this.state.value}`)
     .then(results => {
       console.log(results)
       return results.json();
@@ -28,12 +37,21 @@ class App extends Component {
       })
       this.setState({menuItems: menuItems});
     })
+    event.preventDefault();
   }
+
 
   render() {
     console.log(this.state)
     return (
       <div className="App">
+      <form onSubmit={this.handleSubmit}>
+        <label>
+          Name:
+          <input type="text" value={this.state.value} onChange={this.handleChange} />
+        </label>
+        <input type="submit" value="Submit" />
+      </form>
         <div>
             {this.state.menuItems}
         </div>
