@@ -1,3 +1,3 @@
-Pull the project
+Clone the project
 
-yarn (npm) start
+Yarn/NPM start
